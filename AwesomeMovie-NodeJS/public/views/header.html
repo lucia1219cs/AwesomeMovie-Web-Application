@@ -1,0 +1,49 @@
+<header class="main-header" id="header">
+    <div class="bg-color">
+        <!--nav-->
+        <nav class="nav navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <a class="navbar-brand" ui-sref="app"><img src="images/Awesome.jpg" height=50 width=70></a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="mynavbar">
+                        <ul class="nav navbar-nav">
+                            <li ng-class="{active: stateis('app')}"><a ui-sref="app">Home</a></li>
+                            <li ng-class="{active: stateis('app.movies') || stateis('app.moviedetails')}"><a ui-sref="app.movies">Movies</a></li>
+                            <li ng-class="{active: stateis('app.favorites')}"><a ui-sref="app.favorites">Favorites</a></li>
+                            <li ng-class="{active: stateis('app.promotions')}"><a ui-sref="app.promotions">Promotions</a></li>
+                            <li ng-class="{active: stateis('app.contact')}"><a ui-sref="app.contact">Contact</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li ng-if="!loggedIn"><a ng-click="openLogin()">
+                            <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                            </li>
+                            <li ng-if="loggedIn">
+                            <a>{{username}}</a>
+                            </li>
+                            <li ng-if="loggedIn">
+                            <a ng-click="logOut()">
+                            <span class="glyphicon glyphicon-log-in"></span> Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+        <!--/ nav-->
+        <div class="container text-center">
+            <div class="wrapper" >
+                <h2 class="top-title">Browse Movies & Write Reviews</h2>
+                <h2 class="title">Starting a new Journey!</h2>
+                <a class="btn btn-submit" ng-click="bookTickets()">Get Tickets Now</a>
+
+            </div>
+        </div>
+    </div>
+</header>
+ 

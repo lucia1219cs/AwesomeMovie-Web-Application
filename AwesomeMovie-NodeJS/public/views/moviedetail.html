@@ -1,0 +1,83 @@
+<section class="section-padding">
+    <div class="container">
+        <div class="row row-content">
+            <div class="col-xs-12" ng-if="!showMovie">
+                <h3>{{message}}</h3>
+            </div>
+            <div class="col-xs-12" ng-if="showMovie">
+                <button class="btn btn-xs btn-send pull-right"
+                        type="button" ui-sref="app.movies">
+                        Back to movie list
+                </button>
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <a href="#">
+                            <img class="media-object img-thumbnail movie_item"
+                         ng-src={{movie.image}}>
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading">{{movie.name}}
+                         <span class="label label-danger">{{movie.label}}</span></h2>
+                        <p>{{movie.description}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-9">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <h3>Movie reviews</h3>
+                    </div>
+                </div>
+                <ul class="list-unstyled">
+                    <li class="blockquote" ng-repeat="review in movie.reviews | orderBy:orderText">
+                        <blockquote>
+                            <p>{{review.rating}} Stars</p>
+                            <p>{{review.review}}</p>
+                            <footer>{{review.postedBy.firstname}} {{review.postedBy.lastname}}, {{review.updatedAt | date:'MMM. dd, yyyy'}}</footer>
+                        </blockquote>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-9">
+                <ul class="list-unstyled" ng-show="!reviewForm.$invalid && !reviewForm.$pristine">
+                    <li class="blockquote">
+                        <blockquote>
+                            <p>{{myreview.rating + " Stars"}}</p>
+                            <p>{{myreview.review}}</p>
+                        </blockquote>
+                    </li>
+                </ul>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <h3>Your review</h3>
+                    </div>
+                </div>
+                <form class="form-horizontal" name="reviewForm" ng-submit="submitReview()" novalidate>
+                    <div class="form-group">
+                        <label for="numberstars" class="col-sm-3 control-label">Number Of Stars</label>
+                        <div class="col-sm-9">
+                            <label class="radio-inline"><input type="radio" name="numberstars" value="1" ng-model="myreview.rating">1</label>
+                            <label class="radio-inline"><input type="radio" name="numberstars" value="2" ng-model="myreview.rating">2</label>
+                            <label class="radio-inline"><input type="radio" name="numberstars" value="3" ng-model="myreview.rating">3</label>
+                            <label class="radio-inline"><input type="radio" name="numberstars" value="4" ng-model="myreview.rating">4</label>
+                            <label class="radio-inline"><input type="radio" name="numberstars" value="5" ng-model="myreview.rating">5</label>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : reviewForm.review.$error.required && !reviewForm.review.$pristine }">
+                        <label for="review" class="col-sm-3 control-label">Your Review</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" id="review" name="review" rows="12" ng-model="myreview.review" required></textarea>
+                            <span ng-show="reviewForm.review.$error.required && !reviewForm.review.$pristine" class="help-block">Your review is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-send" ng-disabled="reviewForm.$invalid">Submit Review</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

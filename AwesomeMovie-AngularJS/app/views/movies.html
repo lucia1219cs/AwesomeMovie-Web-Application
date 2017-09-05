@@ -1,0 +1,92 @@
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="section-title">
+                <h2 class="head-title">Movies</h2>
+                <hr class="botm-line">
+            </div>
+        </div>
+        <div class="row" ng-if="!showMovies">
+            <h3>{{message}}</h3>
+        </div>
+        <div class="row" ng-if="showMovies">
+            <div class="col-xs-12">
+                <button ng-click="toggleDetails()" class="btn btn-xs btn-send pull-right" type="button">
+                  {{showDetails ? 'Hide Details':'Show Details'}}
+                </button>
+                <button ng-click="toggleFavorites()" class="btn btn-xs btn-send pull-right" type="button">
+                    {{showFavorites ? 'Hide Favorite Button':'Show Favorite Button'}}
+                </button>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"
+                    ng-class="{active:isSelected(1)}">
+                    <a ng-click="select(1)"
+                     aria-controls="all movie"
+                     role="tab">All</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(2)}">
+                    <a ng-click="select(2)"
+                     aria-controls="action"
+                     role="tab">Action</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(3)}">
+                    <a ng-click="select(3)"
+                     aria-controls="adventure"
+                     role="tab">Adventure</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(4)}">
+                    <a ng-click="select(4)"
+                     aria-controls="animation"
+                     role="tab">Animation</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(5)}">
+                    <a ng-click="select(5)"
+                     aria-controls="comedy"
+                     role="tab">Comedy</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(6)}">
+                    <a ng-click="select(6)"
+                     aria-controls="crime"
+                     role="tab">Crime</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(7)}">
+                    <a ng-click="select(7)"
+                     aria-controls="fatansy"
+                     role="tab">Fatansy</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(8)}">
+                    <a ng-click="select(8)"
+                     aria-controls="horror"
+                     role="tab">Horror</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(9)}">
+                    <a ng-click="select(9)"
+                     aria-controls="romance"
+                     role="tab">Romance</a></li>
+                </ul>
+                <div class="tab-content">
+                    <ul class="media-list tab-pane fade in active">
+                        <li class="media" ng-repeat="movie in movies | filter:filtText">
+                            <div class="media-left media-middle">
+                                <a ui-sref="app.moviedetail({id: movie._id})">
+                                <img class="media-object img-thumbnail movie_item"
+                                 ng-src={{movie.image}}>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <a ui-sref="app.moviedetail({id: movie._id})">
+                                    <h2 class="media-heading">{{movie.name}}
+                                    <span class="label label-danger">{{movie.label}}</span></h2>
+                                </a>
+                                <p ng-show="showDetails">{{movie.description}}</p>
+                                <button  ng-show="showFavorites" ng-click="addToFavorites(movie._id)" class="btn btn-xs btn-send pull-right" type="button">
+                                   <i class="fa fa-heart"></i>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

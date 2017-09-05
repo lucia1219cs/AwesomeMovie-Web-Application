@@ -1,0 +1,51 @@
+<section class="section-padding" id="contact">
+    <div class="container">
+        <div class="row white">
+            <div class="col-md-8 col-sm-12">
+                <div class="section-title">
+                    <h2 class="head-title black">Contact Us</h2>
+                    <hr class="botm-line">
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+                <div class="col-md-6 col-sm-6" style="padding-left:0px;">
+                    <h3 class="cont-title">Email Us</h3>
+                    <div class="contact-info">
+                        <form role="form" name="commentForm" ng-submit="sendComment()" novalidate>
+
+                            <div class="form-group" ng-class="{ 'has-error' : commentForm.name.$error.required && !commentForm.name.$pristine }">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" ng-model="comment.name" required/>
+                                <span ng-show="commentForm.name.$error.required && !commentForm.name.$pristine" class="help-block">Your name is required.</span>
+                            </div>
+
+                            <div class="form-group" ng-class="{ 'has-error has-comment' : commentForm.email.$invalid && !commentForm.email.$pristine }">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" ng-model="comment.email" required/>
+                                <span ng-show="commentForm.email.$invalid && !commentForm.email.$pristine" class="glyphicon glyphicon-remove form-control-comment" aria-hidden="true"></span>
+                                <span ng-show="(commentForm.email.$invalid ||
+                                                commentForm.email.$error.required) &&
+                                                !commentForm.email.$pristine"
+                                                class="help-block">Enter a valid email address.</span>
+                            </div>
+
+                            <div class="form-group" ng-class="{ 'has-error' : commentForm.subject.$error.required && !commentForm.subject.$pristine }">
+                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" ng-model="comment.subject" required/>
+                                <span ng-show="commentForm.subject.$error.required && !commentForm.subject.$pristine" class="help-block">Subject is required.</span>
+                            </div>
+
+                            <div class="form-group" ng-class="{ 'has-error' : commentForm.message.$error.required && !commentForm.message.$pristine }">
+                                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message" ng-model="comment.message" required></textarea>
+                                <span ng-show="commentForm.message.$error.required && !commentForm.message.$pristine" class="help-block">Message is required.</span>
+                            </div>
+                            <button type="submit" class="btn btn-send" ng-disabled="commentForm.$invalid">Send</button>
+                        </form>
+                    </div>                      
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-icon-container hidden-md hidden-sm hidden-xs">
+                        <span aria-hidden="true" class="fa fa-envelope-o"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

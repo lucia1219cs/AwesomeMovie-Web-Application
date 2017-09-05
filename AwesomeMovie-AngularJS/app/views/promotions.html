@@ -1,0 +1,48 @@
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="section-title">
+                <h2 class="head-title">Promotions</h2>
+                <hr class="botm-line">
+            </div>
+        </div>
+        <div ng-if="!showPromotions">
+            <h3>{{message}}</h3>
+        </div>
+        <div ng-repeat="promotion in promotions" ng-if="showPromotions">
+            <div class="row row-content">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="media">
+                        <div class="media-left media-middle">
+                            <a href="#">
+                                <img class="media-object img-thumbnail image_item" ng-src={{promotion.image}}>
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h2 class="media-heading">{{promotion.name}}<span class="label label-danger">{{promotion.label}}</span></h2>
+                            <p>{{promotion.description}}</p>
+                            <p><a class="btn btn-primary btn-xs" href={{promotion.link}}>More &raquo;</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!---->
+<!---->
+<section class="section-padding parallax bg-image-2 section wow fadeIn delay-08s" id="cta-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="cta-txt">
+                    <h3>Subscribe For Updates</h3>
+                    <p>Join our subscribers and get access to the promotions, announcements and much more!</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <a class="btn btn-submit" ng-click="doSubscribe()">Subscribe Now</a>
+            </div>
+        </div>
+    </div>
+</section>
