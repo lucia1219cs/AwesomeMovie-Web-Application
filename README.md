@@ -1,6 +1,9 @@
 # Awesome Movie
 A movie review web app built with the MEAN stack - MongoDB, ExpressJS, AngularJS and NodeJS 
 
+Deployed the website to AWS EC2 at http://ec2-54-164-77-152.compute-1.amazonaws.com:3000/. <br>
+Initial account: username "test", password "test"
+
 ## Main technologies
 - **Front-end**
   - [AngularJS](https://angularjs.org/)
